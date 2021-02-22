@@ -11,12 +11,14 @@ public class PlayerManager : MonoBehaviour
     public float MovementSpeed;
     public GameManager Manager;
     public SoldierScript Soldier;
+    public GameObject[] Soldiers;
 
     void Awake()
     {
         Body = GetComponent<Rigidbody2D>();
         Manager = FindObjectOfType<GameManager>();
         Soldier = FindObjectOfType<SoldierScript>();
+        Soldiers = GameObject.FindGameObjectsWithTag("InjuredSoldier");
     }
 
     void Update()
@@ -47,9 +49,18 @@ public class PlayerManager : MonoBehaviour
         if(collision.tag == "InjuredSoldier" && Soldier != null)
         {
             Debug.Log("Collision with soldier");
-            Soldier.Grounded = false;
-            //Manager.SoldierCounter++;
-            
+            for (int i = 0; i < Soldiers.Length; i++)
+            {
+                if(collision.tag == "InjuredSoldier" == Soldiers[i])
+                //if (Soldier.Soldiers[i] == Soldiers[i])
+                {
+                    Soldiers[i].GetComponent<SoldierDestroy>().IsRescued = true;
+                }
+                else
+                {
+                    Debug.Log("Didn't hit soldier");
+                }
+            }
         }    
         else
         {

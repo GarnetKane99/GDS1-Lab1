@@ -5,13 +5,14 @@ using UnityEngine;
 public class SoldierScript : MonoBehaviour
 {
     public bool Grounded;
-    public SpriteRenderer Soldier;
+    //public SpriteRenderer Soldier;
+    public GameObject[] Soldiers;
 
     // Start is called before the first frame update
     private void Awake()
     {
         //Soldier = GetComponentInChildren<GameObject>();
-        Soldier = GetComponent<SpriteRenderer>();
+        Soldiers = GameObject.FindGameObjectsWithTag("InjuredSoldier");
     }
 
     void Start()
@@ -30,7 +31,7 @@ public class SoldierScript : MonoBehaviour
         if(Grounded == false)
         {
             //Debug.Log("Picked up by helicopter");
-            Destroy(Soldier);
+            Destroy(gameObject);
             Grounded = true;
         }
     }
