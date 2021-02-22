@@ -10,7 +10,7 @@ public class PlayerAnimation : MonoBehaviour
     void Start()
     {
         MovementInput = GetComponent<PlayerManager>();
-        SpriteRender = GetComponentInChildren<SpriteRenderer>();
+        SpriteRender = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -18,7 +18,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         if(MovementInput != null)
         {
-            Vector3 CurrentMoveVector = MovementInput.MovementVector;
+            Vector2 CurrentMoveVector = MovementInput.MoveDirection;
             if(CurrentMoveVector.x > 0)
             {
                 SpriteRender.flipX = false;

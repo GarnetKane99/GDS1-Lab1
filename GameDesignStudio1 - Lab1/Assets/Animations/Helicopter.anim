@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HelicopterMovement
+  m_Name: Helicopter
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -28,7 +28,7 @@ AnimationClip:
     - time: 0.25
       value: {fileID: 4959614726155101453, guid: 0f242d7aee369b44a8d150e06b67ce9e, type: 3}
     - time: 0.33333334
-      value: {fileID: 4959614726155101453, guid: 0f242d7aee369b44a8d150e06b67ce9e, type: 3}
+      value: {fileID: -176731745867154588, guid: 0f242d7aee369b44a8d150e06b67ce9e, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -52,7 +52,7 @@ AnimationClip:
     - {fileID: 3690315247705238436, guid: 0f242d7aee369b44a8d150e06b67ce9e, type: 3}
     - {fileID: -2777123862894475435, guid: 0f242d7aee369b44a8d150e06b67ce9e, type: 3}
     - {fileID: 4959614726155101453, guid: 0f242d7aee369b44a8d150e06b67ce9e, type: 3}
-    - {fileID: 4959614726155101453, guid: 0f242d7aee369b44a8d150e06b67ce9e, type: 3}
+    - {fileID: -176731745867154588, guid: 0f242d7aee369b44a8d150e06b67ce9e, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

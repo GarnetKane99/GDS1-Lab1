@@ -4,35 +4,56 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    CharacterController Controller;
-    public Vector3 MovementVector;
-    public GameManager MovementInfo;
+    [SerializeField]
+    private Rigidbody2D Body;
+    
+    public Vector2 MoveDirection;
+    public float MovementSpeed;
+    public GameManager Manager;
+    public SoldierScript Soldier;
 
-    void Start()
+    void Awake()
     {
-        //Character Controller that is attached to the character prefab
-        Controller = GetComponent<CharacterController>();
-        //Finds object in the scene that contains the speed variable
-        MovementInfo = FindObjectOfType<GameManager>();
+        Body = GetComponent<Rigidbody2D>();
+        Manager = FindObjectOfType<GameManager>();
+        Soldier = FindObjectOfType<SoldierScript>();
     }
 
     void Update()
     {
-        //Normalize movement vector so helicopter doesn't go insane on diagonals
-        MovementVector = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0).normalized;
-        //Check if movement is happening
-        if (MovementVector.magnitude > 0.05)
+        Inputs();
+    }
+
+    void FixedUpdate()
+    {
+        Movement();
+    }
+
+    void Inputs()
+    {
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+
+        MoveDirection = new Vector2(x, y).normalized;
+    }
+
+    void Movement()
+    {
+        Body.velocity = new Vector2(MoveDirection.x * MovementSpeed, MoveDirection.y * MovementSpeed);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "InjuredSoldier" && Soldier != null)
         {
-            //Finds the GameManager gameobject to find appropriate speed
-            if (MovementInfo != null)
-            {
-                Controller.Move(MovementVector * Time.deltaTime * MovementInfo.MoveSpeed);
-            }
-            //If not found (should never be the case) uses the normal movementvector and time as movement
-            else
-            {
-                Controller.Move(MovementVector * Time.deltaTime);
-            }
+            Debug.Log("Collision with soldier");
+            Soldier.Grounded = false;
+            //Manager.SoldierCounter++;
+            
+        }    
+        else
+        {
+            Debug.Log("Collision detected");
         }
     }
 }

@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
 
     public int SoldierCounter;
     public int RescuedCounter;
-    public float MoveSpeed;
 
+    //Activates when the game is created/started
     public void Awake()
     {  
         if(Instance == null)
