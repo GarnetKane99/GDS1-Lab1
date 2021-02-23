@@ -12,8 +12,6 @@ public class SoldierSpawner : MonoBehaviour
     private GameObject Soldier;
     [SerializeField]
     private Vector2[] SoldierLocations;
-    [SerializeField]
-    private BoxCollider2D BoxCollider;
 
     private Vector2 ScreenBounds;
 
@@ -26,7 +24,6 @@ public class SoldierSpawner : MonoBehaviour
         ScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         SoldierWidth = Soldier.transform.GetComponent<SpriteRenderer>().bounds.size.x / 2;
         SoldierHeight = Soldier.transform.GetComponent<SpriteRenderer>().bounds.size.y / 2;
-        BoxCollider = Soldier.transform.GetComponent<BoxCollider2D>();
 
         SoldierLocations = new Vector2[TotalSoldiers];
     }

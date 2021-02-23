@@ -6,19 +6,25 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody2D Body;
+
+    public GameObject Hospitals;
     public GameManager Manager;
+    public bool AtHospital;
 
     //creates an array of soldiers in the scene that can be accessed when picking them up
     public GameObject[] Soldiers;
 
     //public - needs to be accessed in the animator script
     public float MovementSpeed;
+
     public Vector2 MoveDirection;
 
     void Awake()
     {
         Body = GetComponent<Rigidbody2D>();
         Manager = FindObjectOfType<GameManager>();
+        Hospitals = GameObject.FindGameObjectWithTag("Hospital");
+        AtHospital = false;
     }
 
     void Update()
@@ -59,10 +65,18 @@ public class PlayerManager : MonoBehaviour
                 if (collision.tag == "InjuredSoldier" && Soldiers[i] == collision.gameObject)
                 {
                     Soldiers[i].GetComponent<SoldierDestroy>().IsRescued = true;
-                    Debug.Log("Soldier Rescued");
+                    Hospitals.GetComponent<HospitalScript>().PatientOnHeli++;
                 }
             }
-            else
+
+            else if (collision.tag == "Hospital" && Manager.SoldierCounter > 0)
+            {
+                //AtHospital = true;
+                Hospitals.GetComponent<HospitalScript>().AtHospital = true;
+
+            }
+
+            else if (Manager.SoldierCounter >= 3 && collision.tag == "InjuredSoldier")
             {
                 Debug.Log("Carrying too many soldiers");
             }

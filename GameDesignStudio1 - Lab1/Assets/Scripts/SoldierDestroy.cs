@@ -27,6 +27,6 @@ public class SoldierDestroy : MonoBehaviour
             Manager.SoldierCounter++;
             Debug.Log(Manager.SoldierCounter.ToString());
             Destroy(gameObject);
-        }
+        }        
     }
 }
