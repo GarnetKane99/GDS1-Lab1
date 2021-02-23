@@ -6,10 +6,10 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody2D Body;
-
-    public GameObject Hospitals;
     public GameManager Manager;
 
+    public LayerMask layerMask;
+    public float Radius;
 
     //creates an array of soldiers in the scene that can be accessed when picking them up
     public GameObject[] Soldiers;
@@ -23,14 +23,31 @@ public class PlayerManager : MonoBehaviour
     {
         Body = GetComponent<Rigidbody2D>();
         Manager = FindObjectOfType<GameManager>();
-        Hospitals = GameObject.FindGameObjectWithTag("Hospital");
-
     }
 
     void Update()
     {
         Inputs();
         CountSoldiers();
+
+        Collider2D HitCollider = Physics2D.OverlapCircle(transform.position, Radius, layerMask);
+
+        if (HitCollider?.tag == "Hospital")
+        {
+            GameManager.Instance.RescuedCounter += GameManager.Instance.SoldierCounter;
+            GameManager.Instance.SoldierCounter = 0;
+            //Debug.Log("At hospital");
+        }
+        if(HitCollider?.tag == "InjuredSoldier" && GameManager.Instance.SoldierCounter < 3)
+        {
+            //HitCollider.GetComponent<SoldierDestroy>().IsRescued = true;
+            Destroy(HitCollider.gameObject);
+            GameManager.Instance.SoldierCounter++;
+        }
+        if(HitCollider?.tag == "Tree")
+        {
+            //Debug.Log("Game ends");
+        }
     }
 
     void FixedUpdate()
@@ -54,38 +71,6 @@ public class PlayerManager : MonoBehaviour
     void Movement()
     {
         Body.velocity = new Vector2(MoveDirection.x * MovementSpeed, MoveDirection.y * MovementSpeed);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        for(int i = 0; i < Soldiers.Length; i++)
-        {
-            if (Manager.SoldierCounter < 3 && collision.tag == "InjuredSoldier")
-            {
-                if (Soldiers[i] == collision.gameObject)
-                {
-                    Soldiers[i].GetComponent<SoldierDestroy>().IsRescued = true;
-                }
-
-            }
-            
-            else if (Manager.SoldierCounter >= 3 && collision.tag == "InjuredSoldier")
-            {
-                Debug.Log("Carrying too many soldiers");
-            }
-
-            else if (collision.tag == "Hospital" && Manager.SoldierCounter <= 3)
-            {
-                //AtHospital = true;
-                Hospitals.GetComponent<HospitalScript>().AtHospital = true;
-            }
-
-            else if (collision.tag == "Tree")
-            {
-                Debug.Log("Game ended");
-            }
-
-        }
     }
 
     private void CountSoldiers()

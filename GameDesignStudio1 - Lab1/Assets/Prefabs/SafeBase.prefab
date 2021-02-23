@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 4518119870051682077}
   - component: {fileID: 7789958358672505177}
   - component: {fileID: 1690747824}
-  - component: {fileID: 2563022437166631839}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SafeBase
   m_TagString: Hospital
   m_Icon: {fileID: 0}
@@ -110,17 +109,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.56, y: 2.56}
   m_EdgeRadius: 0
---- !u!114 &2563022437166631839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 995938480549174147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee163754d8aa1924ab86a475eb347458, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AtHospital: 0
-  PatientOnHeli: 0
