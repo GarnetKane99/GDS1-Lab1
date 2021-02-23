@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldierSpawner : MonoBehaviour
+public class TreeSpawner : MonoBehaviour
 {
     [SerializeField]
-    private int TotalSoldiers, SoldiersSpawned;
+    private int TotalTrees, TreesSpawned;
     [SerializeField]
-    private float SoldierWidth, SoldierHeight;
+    private float TreeWidth, TreeHeight;
     [SerializeField]
-    private GameObject Soldier;
+    private GameObject Tree;
 
     private Vector2 ScreenBounds;
 
@@ -18,9 +18,8 @@ public class SoldierSpawner : MonoBehaviour
     {
         StartCoroutine(Spawner());
         ScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        SoldierWidth = Soldier.transform.GetComponent<SpriteRenderer>().bounds.size.x / 2;
-        SoldierHeight = Soldier.transform.GetComponent<SpriteRenderer>().bounds.size.y / 2;
-
+        TreeWidth = Tree.transform.GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        TreeHeight = Tree.transform.GetComponent<SpriteRenderer>().bounds.size.y / 2;
     }
 
     // Update is called once per frame
@@ -34,7 +33,7 @@ public class SoldierSpawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.3f);
-            if (SoldiersSpawned < TotalSoldiers)
+            if (TreesSpawned < TotalTrees)
             {
                 Spawn();
             }
@@ -43,8 +42,9 @@ public class SoldierSpawner : MonoBehaviour
 
     private void Spawn()
     {
-        GameObject SoldierObject = Instantiate(Soldier) as GameObject;
-        SoldiersSpawned++;
-        SoldierObject.transform.position = new Vector2(Random.Range(0, ScreenBounds.x - SoldierWidth), Random.Range(-ScreenBounds.y + SoldierHeight, ScreenBounds.y - SoldierHeight));
+        GameObject SoldierObject = Instantiate(Tree) as GameObject;
+        TreesSpawned++;
+
+        SoldierObject.transform.position = new Vector2(Random.Range(0, ScreenBounds.x - TreeWidth), Random.Range(-ScreenBounds.y + TreeHeight, ScreenBounds.y - TreeHeight));
     }
 }

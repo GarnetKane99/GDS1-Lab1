@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3006934846100806287}
   - component: {fileID: 3006934846100806286}
+  - component: {fileID: 1615554610}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,4 +46,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SoldierCounter: 0
   RescuedCounter: 0
-  MoveSpeed: 3
+--- !u!114 &1615554610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3006934846100806285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6a5777ee08bdaf40ad065a67b1cc069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TotalSoldiers: 7
+  Width: 20
+  Height: 20
+  SoldiersSpawned: 0
+  SoldierWidth: 0
+  SoldierHeight: 0
+  Soldier: {fileID: 8523492102148358334, guid: 499f5bbf7828be44c9b4615c277e60a6, type: 3}
+  SoldierLocations: []

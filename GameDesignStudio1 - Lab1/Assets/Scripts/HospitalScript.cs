@@ -5,30 +5,35 @@ using UnityEngine;
 public class HospitalScript : MonoBehaviour
 {
     public bool AtHospital;
-    public int PatientOnHeli;
     GameManager Manager;
-    //PlayerManager Player;
 
     // Start is called before the first frame update
     void Start()
     {
         AtHospital = false;
-        PatientOnHeli = 0;
         Manager = FindObjectOfType<GameManager>();
-        //Player = FindObjectOfType<PlayerManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Manager.SoldierCounter > 0 && AtHospital && PatientOnHeli != 0)
+        if (Manager.SoldierCounter > 0 && AtHospital)
         {
-            Manager.RescuedCounter += PatientOnHeli;
-            PatientOnHeli = 0;
-            AtHospital = false;
+            Manager.RescuedCounter += Manager.SoldierCounter;
             //Manager.SoldierCounter = 0;
+            AtHospital = false;
+            StartCoroutine(RemoveSoldierCounter());
         }
-        if (PatientOnHeli == 0)
-            Manager.SoldierCounter = 0;
+    }
+
+    IEnumerator RemoveSoldierCounter()
+    {
+        yield return new WaitForSeconds(1.0f);
+        ResetCounter();
+    }
+
+    private void ResetCounter()
+    {
+        Manager.SoldierCounter = 0;
     }
 }
