@@ -43,7 +43,8 @@ public class SoldierSpawner : MonoBehaviour
 
     private void Spawn()
     {
-        GameObject SoldierObject = Instantiate(Soldier, SoldierParent.transform) as GameObject;
+        //GameObject SoldierObject = Instantiate(Soldier, SoldierParent.transform) as GameObject;
+        GameObject SoldierObject = Instantiate(Soldier) as GameObject;
         SoldiersSpawned++;
         SoldierObject.transform.position = new Vector2(Random.Range(0, ScreenBounds.x - SoldierWidth), Random.Range(-ScreenBounds.y + SoldierHeight, ScreenBounds.y - SoldierHeight));
     }
