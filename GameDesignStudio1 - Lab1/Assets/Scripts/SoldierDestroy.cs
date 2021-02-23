@@ -6,6 +6,13 @@ public class SoldierDestroy : MonoBehaviour
 {
     public bool IsRescued;
 
+    GameManager Manager;
+
+    private void Awake()
+    {
+        Manager = FindObjectOfType<GameManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +24,10 @@ public class SoldierDestroy : MonoBehaviour
     {
         if (IsRescued)
         {
-            Debug.Log("Rescued this soldier");
+            Manager.SoldierCounter++;
+            Debug.Log(Manager.SoldierCounter.ToString());
             Destroy(gameObject);
+            IsRescued = false;
         }
     }
 }

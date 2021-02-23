@@ -10,14 +10,14 @@ public class PlayerManager : MonoBehaviour
     public Vector2 MoveDirection;
     public float MovementSpeed;
     public GameManager Manager;
-    public SoldierScript Soldier;
+    //public SoldierScript Soldier;
     public GameObject[] Soldiers;
 
     void Awake()
     {
         Body = GetComponent<Rigidbody2D>();
         Manager = FindObjectOfType<GameManager>();
-        Soldier = FindObjectOfType<SoldierScript>();
+        //Soldier = FindObjectOfType<SoldierScript>();
         Soldiers = GameObject.FindGameObjectsWithTag("InjuredSoldier");
     }
 
@@ -46,25 +46,15 @@ public class PlayerManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "InjuredSoldier" && Soldier != null)
+        for(int i = 0; i < Soldiers.Length; i++)
         {
-            Debug.Log("Collision with soldier");
-            for (int i = 0; i < Soldiers.Length; i++)
+            if(collision.tag == "InjuredSoldier" && Soldiers[i] == collision.gameObject)
             {
-                if(collision.tag == "InjuredSoldier" == Soldiers[i])
-                //if (Soldier.Soldiers[i] == Soldiers[i])
-                {
-                    Soldiers[i].GetComponent<SoldierDestroy>().IsRescued = true;
-                }
-                else
-                {
-                    Debug.Log("Didn't hit soldier");
-                }
+                Soldiers[i].GetComponent<SoldierDestroy>().IsRescued = true;
+                Debug.Log("Soldier Rescued");
             }
-        }    
-        else
-        {
-            Debug.Log("Collision detected");
         }
     }
+
 }
+
