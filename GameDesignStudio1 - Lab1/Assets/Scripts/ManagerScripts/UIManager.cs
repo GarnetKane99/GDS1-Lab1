@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        Player = FindObjectOfType<PlayerManager>();
+        
     }
 
     // Start is called before the first frame update
@@ -24,19 +24,23 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Player.EndGame)
+        Player = FindObjectOfType<PlayerManager>();
+        if (Player)
         {
-            GameOverScreen.SetActive(true);
-        }
-        else
-        {
-            GameOverScreen.SetActive(false);
+            if (Player.EndGame)
+            {
+                GameOverScreen.SetActive(true);
+            }
+            else
+            {
+                GameOverScreen.SetActive(false);
+            }
         }
     }
 
     public void PlayAgain()
     {
-        Debug.Log("Playing again clicked");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //Debug.Log("Playing again clicked");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

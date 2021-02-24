@@ -10,9 +10,23 @@ public class GameManager : MonoBehaviour
     public int SoldierCounter;
     public int RescuedCounter;
 
+    [SerializeField]
+    public GameObject Player, Hospital1, Hospital2, SoldierParent, TreeParent;
+
     //Activates when the game is created/started
     public void Awake()
-    {  
+    {
+        GameObject Helicopter = Instantiate(Player) as GameObject;
+        GameObject SoldierOnScreen = Instantiate(SoldierParent) as GameObject;
+        GameObject TreeOnScreen = Instantiate(TreeParent) as GameObject;
+        GameObject HospitalA = Instantiate(Hospital1) as GameObject;
+        GameObject HospitalB = Instantiate(Hospital2) as GameObject;
+
+        HospitalA.transform.position = new Vector2(-8, 2);
+        HospitalB.transform.position = new Vector2(-8, -2);
+
+        //Helicopter.transform.position = new Vector2(Helicopter.transform.position.x, Helicopter.transform.position.y);
+
         if(Instance == null)
         {
             Instance = this;

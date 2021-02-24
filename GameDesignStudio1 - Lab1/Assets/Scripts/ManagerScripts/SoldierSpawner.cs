@@ -11,6 +11,8 @@ public class SoldierSpawner : MonoBehaviour
     [SerializeField]
     private GameObject Soldier, SoldierParent;
 
+    PlayerManager PM;
+
     private Vector2 ScreenBounds;
 
     // Start is called before the first frame update
@@ -25,7 +27,13 @@ public class SoldierSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SoldierParent = GameObject.FindGameObjectWithTag("SoldierParent");
+        PM = FindObjectOfType<PlayerManager>();
 
+        if(PM != null && Input.GetKeyDown(KeyCode.R))
+        {
+            SoldiersSpawned = 0;
+        }
     }
 
     IEnumerator Spawner()
@@ -42,9 +50,16 @@ public class SoldierSpawner : MonoBehaviour
 
     private void Spawn()
     {
-        GameObject SoldierObject = Instantiate(Soldier, SoldierParent.transform) as GameObject;
-        //GameObject SoldierObject = Instantiate(Soldier) as GameObject;
-        SoldiersSpawned++;
-        SoldierObject.transform.position = new Vector2(Random.Range(0, ScreenBounds.x - SoldierWidth), Random.Range(-ScreenBounds.y + SoldierHeight, ScreenBounds.y - SoldierHeight));
+        //GameObject SoldierObject = Instantiate(Soldier, SoldierParent.transform) as GameObject;
+        if (SoldierParent)
+        {
+            GameObject SoldierObject = Instantiate(Soldier, SoldierParent.transform) as GameObject;
+            SoldiersSpawned++;
+            SoldierObject.transform.position = new Vector2(Random.Range(0, ScreenBounds.x - SoldierWidth), Random.Range(-ScreenBounds.y + SoldierHeight, ScreenBounds.y - SoldierHeight));
+        }
+        else if (!SoldierParent)
+        {
+            Debug.Log("No soldier parent found");
+        }
     }
 }

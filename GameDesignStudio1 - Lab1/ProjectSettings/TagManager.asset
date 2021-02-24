@@ -8,6 +8,8 @@ TagManager:
   - Hospital
   - NotHospital
   - Tree
+  - SoldierParent
+  - TreeParent
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,8 @@ public class PlayerManager : MonoBehaviour
     public float Radius;
     public bool EndGame;
 
+    public bool GameReset;
+
     //creates an array of soldiers in the scene that can be accessed when picking them up
     public GameObject[] Soldiers;
 
@@ -26,6 +28,7 @@ public class PlayerManager : MonoBehaviour
         Body = GetComponent<Rigidbody2D>();
         Manager = FindObjectOfType<GameManager>();
         EndGame = false;
+        GameReset = false;
     }
 
     void Update()
@@ -37,7 +40,7 @@ public class PlayerManager : MonoBehaviour
 
             Collider2D HitCollider = Physics2D.OverlapCircle(transform.position, Radius, layerMask);
 
-            if (HitCollider?.tag == "Hospital")
+            if (HitCollider != null && HitCollider?.tag == "Hospital")
             {
                 GameManager.Instance.RescuedCounter += GameManager.Instance.SoldierCounter;
                 GameManager.Instance.SoldierCounter = 0;
