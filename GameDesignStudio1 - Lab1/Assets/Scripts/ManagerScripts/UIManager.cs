@@ -33,4 +33,10 @@ public class UIManager : MonoBehaviour
             GameOverScreen.SetActive(false);
         }
     }
+
+    public void PlayAgain()
+    {
+        Debug.Log("Playing again clicked");
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

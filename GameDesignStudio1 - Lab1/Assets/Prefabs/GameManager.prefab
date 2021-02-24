@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3006934846100806287}
   - component: {fileID: 3006934846100806286}
   - component: {fileID: 1615554610}
+  - component: {fileID: 571824460}
+  - component: {fileID: 571824461}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -59,10 +61,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalSoldiers: 7
-  Width: 20
-  Height: 20
   SoldiersSpawned: 0
   SoldierWidth: 0
   SoldierHeight: 0
-  Soldier: {fileID: 8523492102148358334, guid: 499f5bbf7828be44c9b4615c277e60a6, type: 3}
-  SoldierLocations: []
+  Soldier: {fileID: 2910019321027764572, guid: 499f5bbf7828be44c9b4615c277e60a6, type: 3}
+  SoldierParent: {fileID: 0}
+--- !u!114 &571824460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3006934846100806285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82a51e1376960b84e8ae3614a84f6287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TotalTrees: 3
+  TreesSpawned: 0
+  TreeWidth: 0
+  TreeHeight: 0
+  Tree: {fileID: 5679876680153343688, guid: e21071feed7f0f644b7f4905310c77a8, type: 3}
+--- !u!114 &571824461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3006934846100806285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98753b772cdeb740a95e4c0fd018dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameOverScreen: {fileID: 0}
