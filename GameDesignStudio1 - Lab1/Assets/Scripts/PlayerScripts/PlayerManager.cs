@@ -15,6 +15,9 @@ public class PlayerManager : MonoBehaviour
 
     public bool GameReset;
 
+    public GameObject GameOver;
+
+
     //creates an array of soldiers in the scene that can be accessed when picking them up
     public GameObject[] Soldiers;
 
@@ -27,14 +30,18 @@ public class PlayerManager : MonoBehaviour
     {
         Body = GetComponent<Rigidbody2D>();
         Manager = FindObjectOfType<GameManager>();
+
         EndGame = false;
         GameReset = false;
+
+        GameOver = GameObject.FindGameObjectWithTag("GameOverScreen");
     }
 
     void Update()
     {
         if (!EndGame)
         {
+            GameOver.SetActive(false);
             Inputs();
             CountSoldiers();
 
@@ -55,14 +62,11 @@ public class PlayerManager : MonoBehaviour
             if (HitCollider?.tag == "Tree")
             {
                 EndGame = true;
+                GameOver.SetActive(true);
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            //Debug.Log("Game will reset");
-        }
+        //GameOver.SetActive(false);
     }
 
     void FixedUpdate()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -8,8 +9,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     [Header("Trees")]
     private int TotalTrees;
-    [SerializeField]
-    private int TreesSpawned;
+    public int TreesSpawned;
     [SerializeField]
     private float TreeWidth;
     [SerializeField]
@@ -25,8 +25,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     [Header("Soldier")]
     private int TotalSoldiers;
-    [SerializeField]
-    private int SoldiersSpawned;
+    public int SoldiersSpawned;
     [SerializeField]
     private float SoldierWidth;
     [SerializeField]
@@ -65,13 +64,23 @@ public class SpawnManager : MonoBehaviour
 
         PM = FindObjectOfType<PlayerManager>();
 
-        if (PM != null && Input.GetKeyDown(KeyCode.R))
+        if (PM != null)
         {
-            SoldiersSpawned = 0;
-            TreesSpawned = 0;
-            GameManager.Instance.SoldierCounter = 0;
-            GameManager.Instance.RescuedCounter = 0;
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                BeginRestart();
+            }
         }
+    }
+
+    public void BeginRestart()
+    {
+        SoldiersSpawned = 0;
+        TreesSpawned = 0;
+        GameManager.Instance.SoldierCounter = 0;
+        GameManager.Instance.RescuedCounter = 0;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     IEnumerator TreeTimer()
