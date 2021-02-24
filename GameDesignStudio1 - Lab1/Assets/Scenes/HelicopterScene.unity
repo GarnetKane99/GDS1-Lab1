@@ -308,7 +308,7 @@ PrefabInstance:
     - target: {fileID: 2527036305282450183, guid: 8b557ca67eb908b499827fa02043db46, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1456106286}
+      objectReference: {fileID: 1456106290}
     - target: {fileID: 2527036305282450183, guid: 8b557ca67eb908b499827fa02043db46, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Restart
@@ -324,7 +324,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2527036305282450181, guid: 8b557ca67eb908b499827fa02043db46, type: 3}
   m_PrefabInstance: {fileID: 620585984}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1456106286
+--- !u!114 &1456106290
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,22 +343,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 571824461, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
-      propertyPath: GameOverScreen
-      value: 
-      objectReference: {fileID: 2527036304255892528, guid: 8b557ca67eb908b499827fa02043db46, type: 3}
     - target: {fileID: 3006934846100806285, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 3006934846100806286, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
-      propertyPath: Canvas
-      value: 
-      objectReference: {fileID: 7931776937029104469, guid: c3dc5ce43d5308c44b941635e39e9198, type: 3}
-    - target: {fileID: 3006934846100806286, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
-      propertyPath: GameOver
-      value: 
-      objectReference: {fileID: 2527036304255892528, guid: 8b557ca67eb908b499827fa02043db46, type: 3}
     - target: {fileID: 3006934846100806287, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
       propertyPath: m_RootOrder
       value: 1

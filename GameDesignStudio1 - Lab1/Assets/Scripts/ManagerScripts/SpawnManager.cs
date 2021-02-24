@@ -64,7 +64,7 @@ public class SpawnManager : MonoBehaviour
 
         PM = FindObjectOfType<PlayerManager>();
 
-        if (PM != null)
+        if (PM != null && !PM.EndGame)
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
