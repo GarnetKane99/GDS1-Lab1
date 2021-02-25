@@ -33,19 +33,24 @@ public class PlayerManager : MonoBehaviour
 
         EndGame = false;
         GameReset = false;
-
-        GameOver = GameObject.FindGameObjectWithTag("GameOverScreen");
     }
 
     void Update()
     {
         if (!EndGame)
         {
-            GameOver.SetActive(false);
             Inputs();
             CountSoldiers();
-
             Collider2D HitCollider = Physics2D.OverlapCircle(transform.position, Radius, layerMask);
+
+            if (!GameOver)
+            {
+                GameOver = GameObject.FindGameObjectWithTag("GameOverScreen");
+            }
+            else if (GameOver)
+            {
+                GameOver.SetActive(false);
+            }
 
             if (HitCollider != null && HitCollider?.tag == "Hospital")
             {
@@ -65,8 +70,6 @@ public class PlayerManager : MonoBehaviour
                 GameOver.SetActive(true);
             }
         }
-
-        //GameOver.SetActive(false);
     }
 
     void FixedUpdate()

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public int RescuedCounter;
 
     [SerializeField]
-    public GameObject Player, Hospital1, Hospital2, SoldierParent, TreeParent, Canvas;
+    public GameObject Player, Hospital1, Hospital2, SoldierParent, TreeParent, Canvas, GameOver;
 
     //Activates when the game is created/started
     public void Awake()
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         GameObject HospitalA = Instantiate(Hospital1) as GameObject;
         GameObject HospitalB = Instantiate(Hospital2) as GameObject;
         GameObject CanvasOnScreen = Instantiate(Canvas) as GameObject;
-        //GameObject GameOverScreen = Instantiate(GameOver) as GameObject;
+        GameObject GameOverScreen = Instantiate(GameOver) as GameObject;
 
         HospitalA.transform.position = new Vector2(-8, 2);
         HospitalB.transform.position = new Vector2(-8, -2);

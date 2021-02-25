@@ -9,7 +9,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     [Header("Trees")]
     private int TotalTrees;
-    public int TreesSpawned;
+    [SerializeField]
+    private int TreesSpawned;
     [SerializeField]
     private float TreeWidth;
     [SerializeField]
@@ -25,7 +26,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     [Header("Soldier")]
     private int TotalSoldiers;
-    public int SoldiersSpawned;
+    [SerializeField]
+    private int SoldiersSpawned;
     [SerializeField]
     private float SoldierWidth;
     [SerializeField]

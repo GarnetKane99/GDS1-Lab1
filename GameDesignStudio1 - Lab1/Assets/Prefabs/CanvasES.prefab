@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3079138096930826251}
   - component: {fileID: 3079138096930826261}
   - component: {fileID: 3079138096930826250}
+  - component: {fileID: 1326371822931228712}
   m_Layer: 5
   m_Name: HeliText
   m_TagString: Untagged
@@ -34,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -575, y: 330}
-  m_SizeDelta: {x: 330, y: 30}
+  m_AnchoredPosition: {x: -500, y: 330}
+  m_SizeDelta: {x: 480, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3079138096930826261
 CanvasRenderer:
@@ -78,7 +79,19 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'soldiers in helicopter:'
+  m_Text: 
+--- !u!114 &1326371822931228712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079138096930826248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf74fe88e164c844698ac35481ca6eb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3079138097826626220
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +103,7 @@ GameObject:
   - component: {fileID: 3079138097826626223}
   - component: {fileID: 3079138097826626217}
   - component: {fileID: 3079138097826626222}
+  - component: {fileID: 515282743969950033}
   m_Layer: 5
   m_Name: RescuedText
   m_TagString: Untagged
@@ -113,8 +127,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -575, y: 300}
-  m_SizeDelta: {x: 330, y: 30}
+  m_AnchoredPosition: {x: -500, y: 300}
+  m_SizeDelta: {x: 480, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3079138097826626217
 CanvasRenderer:
@@ -157,7 +171,19 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'rescued soldiers:'
+  m_Text: 
+--- !u!114 &515282743969950033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079138097826626220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e3beb271dccbaa4791818cbed040cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3079138098237599611
 GameObject:
   m_ObjectHideFlags: 0
