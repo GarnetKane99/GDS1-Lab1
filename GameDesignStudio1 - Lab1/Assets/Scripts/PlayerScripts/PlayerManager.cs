@@ -7,29 +7,28 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody2D Body;
-    public GameManager Manager;
+    [SerializeField]
+    private UIManager UI;
+    [SerializeField]
+    private SpawnManager SM;
+    [SerializeField]
+    private GameObject GameOver, VictoryScreen;
+    [SerializeField]
+    private float Radius;
 
-    public LayerMask layerMask;
-    public float Radius;
-    public bool EndGame;
-
-    public bool GameReset;
-
-    public GameObject GameOver;
-
-
-    //creates an array of soldiers in the scene that can be accessed when picking them up
-    public GameObject[] Soldiers;
-
-    //public - needs to be accessed in the animator script
+    public bool EndGame, GameReset, GameWon;
+    //public bool GameWon;
+    //public bool GameReset;
     public float MovementSpeed;
-
     public Vector2 MoveDirection;
+    public LayerMask layerMask;
+    public GameObject[] Soldiers;
 
     void Awake()
     {
         Body = GetComponent<Rigidbody2D>();
-        Manager = FindObjectOfType<GameManager>();
+        UI = GameObject.FindObjectOfType<UIManager>();
+        SM = GameObject.FindObjectOfType<SpawnManager>();
 
         EndGame = false;
         GameReset = false;
@@ -37,7 +36,7 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        if (!EndGame)
+        if (!EndGame && !GameWon)
         {
             Inputs();
             CountSoldiers();
@@ -45,22 +44,28 @@ public class PlayerManager : MonoBehaviour
 
             if (!GameOver)
             {
-                GameOver = GameObject.FindGameObjectWithTag("GameOverScreen");
+                GameOver = UI.GameOverScreen;
             }
-            else if (GameOver)
+            if (GameOver)
             {
                 GameOver.SetActive(false);
+            }
+            if(!VictoryScreen)
+            {
+                VictoryScreen = UI.VictoryScreen;
+            }
+            if(VictoryScreen)
+            {
+                VictoryScreen.SetActive(false);
             }
 
             if (HitCollider != null && HitCollider?.tag == "Hospital")
             {
                 GameManager.Instance.RescuedCounter += GameManager.Instance.SoldierCounter;
                 GameManager.Instance.SoldierCounter = 0;
-                //Debug.Log("At hospital");
             }
             if (HitCollider?.tag == "InjuredSoldier" && GameManager.Instance.SoldierCounter < 3)
             {
-                //HitCollider.GetComponent<SoldierDestroy>().IsRescued = true;
                 Destroy(HitCollider.gameObject);
                 GameManager.Instance.SoldierCounter++;
             }
@@ -68,6 +73,12 @@ public class PlayerManager : MonoBehaviour
             {
                 EndGame = true;
                 GameOver.SetActive(true);
+            }
+            if (GameManager.Instance.RescuedCounter == SM.TotalSoldiers && SM.Continued == false)
+            {
+                //Debug.Log("Game won");
+                GameWon = true;
+                VictoryScreen.SetActive(true);
             }
         }
     }
@@ -93,6 +104,7 @@ public class PlayerManager : MonoBehaviour
     private void CountSoldiers()
     {
         Soldiers = GameObject.FindGameObjectsWithTag("InjuredSoldier");
+
     }
 }
 

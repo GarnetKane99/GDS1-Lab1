@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public int RescuedCounter;
 
     [SerializeField]
-    public GameObject Player, Hospital1, Hospital2, SoldierParent, TreeParent, Canvas, GameOver;
+    private GameObject Player, Hospital1, Hospital2, SoldierParent, TreeParent;
 
     //Activates when the game is created/started
     public void Awake()
@@ -21,13 +21,10 @@ public class GameManager : MonoBehaviour
         GameObject TreeOnScreen = Instantiate(TreeParent) as GameObject;
         GameObject HospitalA = Instantiate(Hospital1) as GameObject;
         GameObject HospitalB = Instantiate(Hospital2) as GameObject;
-        GameObject CanvasOnScreen = Instantiate(Canvas) as GameObject;
-        GameObject GameOverScreen = Instantiate(GameOver) as GameObject;
+        //GameObject UserInterface = Instantiate(UI) as GameObject;
 
         HospitalA.transform.position = new Vector2(-8, 2);
         HospitalB.transform.position = new Vector2(-8, -2);
-
-        //Helicopter.transform.position = new Vector2(Helicopter.transform.position.x, Helicopter.transform.position.y);
 
         if(Instance == null)
         {

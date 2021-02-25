@@ -23,9 +23,9 @@ public class SpawnManager : MonoBehaviour
     private Vector2 TreeBounds;
 
     //Soldier things
-    [SerializeField]
+
     [Header("Soldier")]
-    private int TotalSoldiers;
+    public int TotalSoldiers;
     [SerializeField]
     private int SoldiersSpawned;
     [SerializeField]
@@ -43,6 +43,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     PlayerManager PM;
 
+    public bool Continued;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +58,8 @@ public class SpawnManager : MonoBehaviour
 
         StartCoroutine(TreeTimer());
         StartCoroutine(SoldierTimer());
+
+        Continued = false;
     }
 
     // Update is called once per frame
@@ -83,6 +87,13 @@ public class SpawnManager : MonoBehaviour
         GameManager.Instance.RescuedCounter = 0;
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Continue()
+    {
+        TotalSoldiers++;
+        Continued = true;
+        PM.GameWon = false;
     }
 
     IEnumerator TreeTimer()

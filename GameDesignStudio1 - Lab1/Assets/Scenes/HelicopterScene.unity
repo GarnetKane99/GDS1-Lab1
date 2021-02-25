@@ -206,6 +206,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1182704831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3006934846100806285, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
+  m_PrefabInstance: {fileID: 3006934847156412012}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1182704835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182704831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759bffb7a92429240b53f988ca938a4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 7931776937029104469, guid: c3dc5ce43d5308c44b941635e39e9198, type: 3}
+  VictoryScreen: {fileID: 0}
+  GameOverScreen: {fileID: 0}
 --- !u!1001 &3006934847156412012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -213,10 +233,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 571824457, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
+      propertyPath: TotalTrees
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 571824457, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
+      propertyPath: TotalSoldiers
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3006934846100806285, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3006934846100806286, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 7931776937029104469, guid: c3dc5ce43d5308c44b941635e39e9198, type: 3}
     - target: {fileID: 3006934846100806286, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
       propertyPath: GameOver
       value: 

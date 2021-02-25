@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerBoundaries : MonoBehaviour
 {
     private Vector2 ScreenBounds;
-    [SerializeField]
     private float HeliWidth, HeliHeight;
 
     // Start is called before the first frame update
