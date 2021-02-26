@@ -15,6 +15,7 @@ TagManager:
   - Pickup
   - Dropoff
   - Sound
+  - SoldierFull
   layers:
   - Default
   - TransparentFX

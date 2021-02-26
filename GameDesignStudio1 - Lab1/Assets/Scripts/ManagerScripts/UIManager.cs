@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject UI, VictoryScreen, GameOverScreen;
+    public GameObject UI, VictoryScreen, GameOverScreen, TooManySoldiers;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,6 +24,11 @@ public class UIManager : MonoBehaviour
         {
             GameOverScreen = GameObject.FindGameObjectWithTag("GameOverScreen");
             GameOverScreen.SetActive(false);
+        }
+        if(!TooManySoldiers)
+        {
+            TooManySoldiers = GameObject.FindGameObjectWithTag("SoldierFull");
+            TooManySoldiers.SetActive(false);
         }
     }
 }

@@ -226,6 +226,7 @@ MonoBehaviour:
   UI: {fileID: 7931776937029104469, guid: c3dc5ce43d5308c44b941635e39e9198, type: 3}
   VictoryScreen: {fileID: 0}
   GameOverScreen: {fileID: 0}
+  TooManySoldiers: {fileID: 0}
 --- !u!82 &1182704836
 AudioSource:
   m_ObjectHideFlags: 0
@@ -331,11 +332,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 571824457, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
       propertyPath: TotalTrees
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 571824457, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
       propertyPath: TotalSoldiers
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3006934846100806285, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
       propertyPath: m_Name
@@ -353,6 +354,10 @@ PrefabInstance:
       propertyPath: GameOver
       value: 
       objectReference: {fileID: 2527036304255892528, guid: 8b557ca67eb908b499827fa02043db46, type: 3}
+    - target: {fileID: 3006934846100806286, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
+      propertyPath: SoundManager
+      value: 
+      objectReference: {fileID: 3077976300918500458, guid: e25d28681668ac340a210c9ebcf838a6, type: 3}
     - target: {fileID: 3006934846100806287, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
       propertyPath: m_RootOrder
       value: 1

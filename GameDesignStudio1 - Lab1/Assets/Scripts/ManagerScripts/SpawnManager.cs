@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 public class SpawnManager : MonoBehaviour
 {
     //Tree things
-    [SerializeField]
     [Header("Trees")]
-    private int TotalTrees;
+    public int TotalTrees, NewTreesSpawned;
     [SerializeField]
     private int TreesSpawned;
     [SerializeField]
@@ -25,7 +24,7 @@ public class SpawnManager : MonoBehaviour
     //Soldier things
 
     [Header("Soldier")]
-    public int TotalSoldiers;
+    public int TotalSoldiers, NewSoldiersSpawned;
     [SerializeField]
     private int SoldiersSpawned;
     [SerializeField]
@@ -56,6 +55,9 @@ public class SpawnManager : MonoBehaviour
         SoldierWidth = Soldier.transform.GetComponent<SpriteRenderer>().bounds.size.x / 2;
         SoldierHeight = Soldier.transform.GetComponent<SpriteRenderer>().bounds.size.y / 2;
 
+        NewTreesSpawned = 0;
+        NewSoldiersSpawned = 0;
+
         StartCoroutine(TreeTimer());
         StartCoroutine(SoldierTimer());
 
@@ -70,7 +72,7 @@ public class SpawnManager : MonoBehaviour
 
         PM = FindObjectOfType<PlayerManager>();
 
-        if (PM != null && !PM.EndGame)
+        if (PM != null && !PM.EndGame && !PM.GameWon)
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -81,6 +83,8 @@ public class SpawnManager : MonoBehaviour
 
     public void BeginRestart()
     {
+        TotalSoldiers = TotalSoldiers - NewSoldiersSpawned;
+        TotalTrees = TotalTrees - NewTreesSpawned;
         SoldiersSpawned = 0;
         TreesSpawned = 0;
         GameManager.Instance.SoldierCounter = 0;
@@ -91,7 +95,7 @@ public class SpawnManager : MonoBehaviour
 
     public void Continue()
     {
-        TotalSoldiers++;
+        NewSpawn();
         Continued = true;
         PM.GameWon = false;
     }
@@ -138,5 +142,10 @@ public class SpawnManager : MonoBehaviour
             SoldiersSpawned++;
             SoldierObject.transform.position = new Vector2(Random.Range(0, SoldierBounds.x - SoldierWidth), Random.Range(-SoldierBounds.y + SoldierHeight, SoldierBounds.y - SoldierHeight));
         }
+    }
+
+    private void NewSpawn()
+    {
+
     }
 }

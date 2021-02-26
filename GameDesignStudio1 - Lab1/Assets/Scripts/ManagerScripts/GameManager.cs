@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public AudioSource Audio;
 
     [SerializeField]
-    private GameObject Player, Hospital1, Hospital2, SoldierParent, TreeParent;
+    private GameObject Player, Hospital1, Hospital2, SoldierParent, TreeParent, SoundManager;
 
     //Activates when the game is created/started
     public void Awake()
@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         GameObject TreeOnScreen = Instantiate(TreeParent) as GameObject;
         GameObject HospitalA = Instantiate(Hospital1) as GameObject;
         GameObject HospitalB = Instantiate(Hospital2) as GameObject;
+        GameObject Sound = Instantiate(SoundManager) as GameObject;
 
         Audio = GetComponent<AudioSource>();
 

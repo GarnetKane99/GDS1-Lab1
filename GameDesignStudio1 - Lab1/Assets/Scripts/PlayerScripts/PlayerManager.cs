@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private SpawnManager SM;
     [SerializeField]
-    private GameObject GameOver, VictoryScreen;
+    private GameObject GameOver, VictoryScreen, TooManySoldierScreen;
     [SerializeField]
     private float Radius;
 
@@ -25,6 +25,9 @@ public class PlayerManager : MonoBehaviour
     public Vector2 MoveDirection;
     public LayerMask layerMask;
     public GameObject[] Soldiers;
+
+    public DropoffSound Dropoff;
+    public PickupSound Pickup;
     
 
     void Awake()
@@ -54,7 +57,6 @@ public class PlayerManager : MonoBehaviour
             {
                 GameOver.SetActive(false);
             }
-
             if(!VictoryScreen)
             {
                 VictoryScreen = UI.VictoryScreen;
@@ -63,16 +65,43 @@ public class PlayerManager : MonoBehaviour
             {
                 VictoryScreen.SetActive(false);
             }
-
-            if (HitCollider != null && HitCollider?.tag == "Hospital")
+            if(!TooManySoldierScreen)
             {
+                TooManySoldierScreen = UI.TooManySoldiers;
+            }
+            if(!Dropoff)
+            {
+                Dropoff = GameObject.FindObjectOfType<DropoffSound>();
+            }
+            if(!Pickup)
+            {
+                Pickup = GameObject.FindObjectOfType<PickupSound>();
+            }
+
+            if (HitCollider != null && HitCollider?.tag == "Hospital" && GameManager.Instance.SoldierCounter > 0)
+            {
+                //Dropoff.Play();
+                if(!GameWon)
+                {
+                    Dropoff.Dropoff.Play();
+                }
                 GameManager.Instance.RescuedCounter += GameManager.Instance.SoldierCounter;
                 GameManager.Instance.SoldierCounter = 0;
             }
             if (HitCollider?.tag == "InjuredSoldier" && GameManager.Instance.SoldierCounter < 3)
             {
+                //Pickup.Play();
+                Pickup.Pickup.Play();
                 Destroy(HitCollider.gameObject);
                 GameManager.Instance.SoldierCounter++;
+            }
+            else if (HitCollider?.tag == "InjuredSoldier" && GameManager.Instance.SoldierCounter >= 3)
+            {
+                TooManySoldierScreen.SetActive(true);
+            }
+            if(HitCollider?.tag != "InjuredSoldier" && GameManager.Instance.SoldierCounter >= 3)
+            {
+                TooManySoldierScreen.SetActive(false);
             }
             if (HitCollider?.tag == "Tree")
             {
@@ -83,6 +112,7 @@ public class PlayerManager : MonoBehaviour
             {
                 //Debug.Log("Game won");
                 GameWon = true;
+                Dropoff.Dropoff.Stop();
                 VictoryScreen.SetActive(true);               
             }
 
