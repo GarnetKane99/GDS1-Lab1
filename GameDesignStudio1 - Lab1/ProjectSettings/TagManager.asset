@@ -12,6 +12,9 @@ TagManager:
   - TreeParent
   - GameOverScreen
   - VictoryScreen
+  - Pickup
+  - Dropoff
+  - Sound
   layers:
   - Default
   - TransparentFX

@@ -17,16 +17,20 @@ public class PlayerManager : MonoBehaviour
     private float Radius;
 
     public bool EndGame, GameReset, GameWon;
+    public AudioSource HeliSound;
+
     //public bool GameWon;
     //public bool GameReset;
     public float MovementSpeed;
     public Vector2 MoveDirection;
     public LayerMask layerMask;
     public GameObject[] Soldiers;
+    
 
     void Awake()
     {
         Body = GetComponent<Rigidbody2D>();
+        HeliSound = GetComponent<AudioSource>();
         UI = GameObject.FindObjectOfType<UIManager>();
         SM = GameObject.FindObjectOfType<SpawnManager>();
 
@@ -46,15 +50,16 @@ public class PlayerManager : MonoBehaviour
             {
                 GameOver = UI.GameOverScreen;
             }
-            if (GameOver)
+            else if (GameOver)
             {
                 GameOver.SetActive(false);
             }
+
             if(!VictoryScreen)
             {
                 VictoryScreen = UI.VictoryScreen;
             }
-            if(VictoryScreen)
+            else if(VictoryScreen)
             {
                 VictoryScreen.SetActive(false);
             }
@@ -78,7 +83,13 @@ public class PlayerManager : MonoBehaviour
             {
                 //Debug.Log("Game won");
                 GameWon = true;
-                VictoryScreen.SetActive(true);
+                VictoryScreen.SetActive(true);               
+            }
+
+            if(EndGame || GameWon)
+            {
+                GameManager.Instance.Audio.Stop();
+                HeliSound.Stop();
             }
         }
     }

@@ -7,6 +7,7 @@ public class PlayAgain : MonoBehaviour
 {
     [SerializeField]
     private SpawnManager SM;
+    private PlayerManager PM;
 
     public void Restart()
     {
@@ -15,15 +16,19 @@ public class PlayAgain : MonoBehaviour
         if(SM)
         {
             SM.BeginRestart();
+            GameManager.Instance.Audio.Play();
         }
     }
 
     public void Continue()
     {
         SM = GameManager.Instance.GetComponent<SpawnManager>();
+        PM = FindObjectOfType<PlayerManager>();
         if(SM)
         {
             SM.Continue();
+            GameManager.Instance.Audio.Play();
+            PM.HeliSound.Play();
         }
     }
 

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public int SoldierCounter;
     public int RescuedCounter;
+    public AudioSource Audio;
 
     [SerializeField]
     private GameObject Player, Hospital1, Hospital2, SoldierParent, TreeParent;
@@ -21,7 +22,8 @@ public class GameManager : MonoBehaviour
         GameObject TreeOnScreen = Instantiate(TreeParent) as GameObject;
         GameObject HospitalA = Instantiate(Hospital1) as GameObject;
         GameObject HospitalB = Instantiate(Hospital2) as GameObject;
-        //GameObject UserInterface = Instantiate(UI) as GameObject;
+
+        Audio = GetComponent<AudioSource>();
 
         HospitalA.transform.position = new Vector2(-8, 2);
         HospitalB.transform.position = new Vector2(-8, -2);
