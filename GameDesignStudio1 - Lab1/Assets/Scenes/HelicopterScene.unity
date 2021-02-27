@@ -332,11 +332,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 571824457, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
       propertyPath: TotalTrees
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 571824457, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
       propertyPath: TotalSoldiers
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3006934846100806285, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
       propertyPath: m_Name
@@ -346,6 +346,10 @@ PrefabInstance:
       propertyPath: UI
       value: 
       objectReference: {fileID: 7931776937029104469, guid: c3dc5ce43d5308c44b941635e39e9198, type: 3}
+    - target: {fileID: 3006934846100806286, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 637563097040392791, guid: 6212e618a65d9fd4fb27a6098b23736b, type: 3}
     - target: {fileID: 3006934846100806286, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
       propertyPath: SoundFX
       value: 

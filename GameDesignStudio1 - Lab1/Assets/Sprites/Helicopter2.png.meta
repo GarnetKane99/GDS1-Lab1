@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: 0f242d7aee369b44a8d150e06b67ce9e
+guid: 2a15da96e0a09a34b953bae53f4a8d21
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -176731745867154588
-    second: HelicopterAnim_0
+      213: 3686354995195735381
+    second: Helicopter2_0
   - first:
-      213: 3690315247705238436
-    second: HelicopterAnim_1
+      213: 6105714894780562688
+    second: Helicopter2_1
   - first:
-      213: -2777123862894475435
-    second: HelicopterAnim_2
+      213: -4579677091681346656
+    second: Helicopter2_2
   - first:
-      213: 4959614726155101453
-    second: HelicopterAnim_3
+      213: -1329778359235000040
+    second: Helicopter2_3
+  - first:
+      213: 3176134516685093124
+    second: Helicopter2_4
+  - first:
+      213: 2197244192370491396
+    second: Helicopter2_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -103,85 +109,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HelicopterAnim_0
+      name: Helicopter2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 40
-        width: 236
-        height: 140
+        x: 4
+        y: 44
+        width: 240
+        height: 148
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46bbd0bd96f1c8df0800000000000000
-      internalID: -176731745867154588
+      spriteID: 55de0a44650982330800000000000000
+      internalID: 3686354995195735381
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HelicopterAnim_1
+      name: Helicopter2_1
       rect:
         serializedVersion: 2
-        x: 256
-        y: 40
-        width: 236
-        height: 140
+        x: 260
+        y: 44
+        width: 240
+        height: 148
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4abada86a22a63330800000000000000
-      internalID: 3690315247705238436
+      spriteID: 00df43be85bdbb450800000000000000
+      internalID: 6105714894780562688
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HelicopterAnim_2
+      name: Helicopter2_2
       rect:
         serializedVersion: 2
-        x: 512
-        y: 40
-        width: 236
-        height: 140
+        x: 516
+        y: 44
+        width: 240
+        height: 148
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5570aee7f8ca579d0800000000000000
-      internalID: -2777123862894475435
+      spriteID: 0abd65403f7b170c0800000000000000
+      internalID: -4579677091681346656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HelicopterAnim_3
+      name: Helicopter2_3
       rect:
         serializedVersion: 2
-        x: 768
-        y: 40
-        width: 236
-        height: 140
+        x: 772
+        y: 44
+        width: 240
+        height: 148
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d056547f05714d440800000000000000
-      internalID: 4959614726155101453
+      spriteID: 819cbc3b0adab8de0800000000000000
+      internalID: -1329778359235000040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Helicopter2_4
+      rect:
+        serializedVersion: 2
+        x: 1028
+        y: 44
+        width: 240
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4093fd9d385e31c20800000000000000
+      internalID: 3176134516685093124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Helicopter2_5
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 44
+        width: 240
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 400880393fd2e7e10800000000000000
+      internalID: 2197244192370491396
       vertices: []
       indices: 
       edges: []

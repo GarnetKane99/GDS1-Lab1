@@ -19,6 +19,8 @@ public class PlayerManager : MonoBehaviour
     public bool EndGame, GameReset, GameWon;
     public AudioSource HeliSound;
 
+    Animator HeliAnim;
+
     //public bool GameWon;
     //public bool GameReset;
     public float MovementSpeed;
@@ -34,6 +36,7 @@ public class PlayerManager : MonoBehaviour
     {
         Body = GetComponent<Rigidbody2D>();
         HeliSound = GetComponent<AudioSource>();
+        HeliAnim = GetComponent<Animator>();
         UI = GameObject.FindObjectOfType<UIManager>();
         SM = GameObject.FindObjectOfType<SpawnManager>();
 
@@ -106,6 +109,7 @@ public class PlayerManager : MonoBehaviour
             if (HitCollider?.tag == "Tree")
             {
                 EndGame = true;
+                HeliAnim.SetBool("Explosion", true);
                 GameOver.SetActive(true);
             }
             if (GameManager.Instance.RescuedCounter == SM.TotalSoldiers && SM.Continued == false)
