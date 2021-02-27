@@ -41,6 +41,8 @@ public class SpawnManager : MonoBehaviour
     //PlayerManager
     [SerializeField]
     PlayerManager PM;
+    [SerializeField]
+    private int SoldierRandomiser;
 
     public bool Continued;
 
@@ -79,12 +81,16 @@ public class SpawnManager : MonoBehaviour
                 BeginRestart();
             }
         }
+
+        NewSpawn();
     }
 
     public void BeginRestart()
     {
         TotalSoldiers = TotalSoldiers - NewSoldiersSpawned;
         TotalTrees = TotalTrees - NewTreesSpawned;
+        NewSoldiersSpawned = 0;
+        NewTreesSpawned = 0;
         SoldiersSpawned = 0;
         TreesSpawned = 0;
         GameManager.Instance.SoldierCounter = 0;
@@ -95,7 +101,6 @@ public class SpawnManager : MonoBehaviour
 
     public void Continue()
     {
-        NewSpawn();
         Continued = true;
         PM.GameWon = false;
     }
@@ -105,7 +110,11 @@ public class SpawnManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.3f);
-            if (TreesSpawned < TotalTrees)
+            if (TreesSpawned < TotalTrees && Continued == false)
+            {
+                SpawnTree();
+            }
+            if (TreesSpawned < TotalTrees && Continued == true)
             {
                 SpawnTree();
             }
@@ -117,7 +126,11 @@ public class SpawnManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.3f);
-            if (SoldiersSpawned < TotalSoldiers)
+            if (SoldiersSpawned < TotalSoldiers && Continued == false)
+            {
+                SpawnSoldier();
+            }
+            if (SoldiersSpawned < TotalSoldiers && Continued == true)
             {
                 SpawnSoldier();
             }
@@ -146,6 +159,28 @@ public class SpawnManager : MonoBehaviour
 
     private void NewSpawn()
     {
+        if(GameManager.Instance.RescuedCounter == TotalSoldiers && Continued == true)
+        {
+            SoldierRandomiser = Random.Range(1, 10);
+            Debug.Log("Soldier Randomiser: " + SoldierRandomiser);
+            NewSoldiersSpawned += SoldierRandomiser;
+            TotalSoldiers += SoldierRandomiser;
 
+            if(SoldierRandomiser <= 3)
+            {
+                PM.MovementSpeed = PM.MovementSpeed + 1;
+                NewTreesSpawned = NewTreesSpawned + 1;
+                TotalTrees = TotalTrees + 1;
+            }
+            else if (SoldierRandomiser >3 && SoldierRandomiser <= 7)
+            {
+                NewTreesSpawned = NewTreesSpawned + 1;
+                TotalTrees = TotalTrees + 1;
+            }
+            else if (SoldierRandomiser > 7)
+            {
+                PM.MovementSpeed = PM.MovementSpeed + 1;
+            }
+        }     
     }
 }

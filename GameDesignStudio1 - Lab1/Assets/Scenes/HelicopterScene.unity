@@ -336,7 +336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 571824457, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
       propertyPath: TotalSoldiers
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3006934846100806285, guid: 275e66ec74c4b21489f5a8957aae7d70, type: 3}
       propertyPath: m_Name
