@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
 
         Audio = GetComponent<AudioSource>();
 
-        HospitalA.transform.position = new Vector2(-8, 2);
-        HospitalB.transform.position = new Vector2(-8, -2);
+        HospitalA.transform.position = new Vector2(-7, 3);
+        HospitalB.transform.position = new Vector2(-7, -3);
 
         if(Instance == null)
         {

@@ -93,6 +93,7 @@ public class SpawnManager : MonoBehaviour
         NewTreesSpawned = 0;
         SoldiersSpawned = 0;
         TreesSpawned = 0;
+        Continued = false;
         GameManager.Instance.SoldierCounter = 0;
         GameManager.Instance.RescuedCounter = 0;
 
