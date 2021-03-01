@@ -8,8 +8,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private Rigidbody2D Body;
     [SerializeField]
-    private UIManager UI;
-    [SerializeField]
     private SpawnManager SM;
     [SerializeField]
     private GameObject GameOver, VictoryScreen, TooManySoldierScreen;
@@ -37,7 +35,7 @@ public class PlayerManager : MonoBehaviour
         Body = GetComponent<Rigidbody2D>();
         HeliSound = GetComponent<AudioSource>();
         HeliAnim = GetComponent<Animator>();
-        UI = GameObject.FindObjectOfType<UIManager>();
+
         SM = GameObject.FindObjectOfType<SpawnManager>();
 
         EndGame = false;
@@ -54,7 +52,7 @@ public class PlayerManager : MonoBehaviour
 
             if (!GameOver)
             {
-                GameOver = UI.GameOverScreen;
+                GameOver = GameObject.FindGameObjectWithTag("GameOverScreen");
             }
             else if (GameOver)
             {
@@ -62,7 +60,7 @@ public class PlayerManager : MonoBehaviour
             }
             if(!VictoryScreen)
             {
-                VictoryScreen = UI.VictoryScreen;
+                VictoryScreen = GameObject.FindGameObjectWithTag("VictoryScreen");
             }
             else if(VictoryScreen)
             {
@@ -70,7 +68,11 @@ public class PlayerManager : MonoBehaviour
             }
             if(!TooManySoldierScreen)
             {
-                TooManySoldierScreen = UI.TooManySoldiers;
+                TooManySoldierScreen = GameObject.FindGameObjectWithTag("SoldierFull");
+            }
+            else if(TooManySoldierScreen)
+            {
+                TooManySoldierScreen.SetActive(false);
             }
             if(!Dropoff)
             {

@@ -44,7 +44,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private int SoldierRandomiser;
 
-    public bool Continued;
+    public bool Continued, Resetting;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +64,7 @@ public class SpawnManager : MonoBehaviour
         StartCoroutine(SoldierTimer());
 
         Continued = false;
+        Resetting = false;
     }
 
     // Update is called once per frame
@@ -82,6 +83,11 @@ public class SpawnManager : MonoBehaviour
             }
         }
 
+        if(Resetting)
+        {
+            GameManager.Instance.SoldierCounter = 0;
+        }
+
         NewSpawn();
     }
 
@@ -94,10 +100,25 @@ public class SpawnManager : MonoBehaviour
         SoldiersSpawned = 0;
         TreesSpawned = 0;
         Continued = false;
+        Resetting = true;
+
+        StartCoroutine(ResetCount());
+        
         GameManager.Instance.SoldierCounter = 0;
         GameManager.Instance.RescuedCounter = 0;
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    IEnumerator ResetCount()
+    {
+        yield return new WaitForSeconds(0.5f);
+        CounterReset();
+    }
+
+    public void CounterReset()
+    {
+        Resetting = false;
     }
 
     public void Continue()
@@ -163,7 +184,6 @@ public class SpawnManager : MonoBehaviour
         if(GameManager.Instance.RescuedCounter == TotalSoldiers && Continued == true)
         {
             SoldierRandomiser = Random.Range(1, 10);
-            Debug.Log("Soldier Randomiser: " + SoldierRandomiser);
             NewSoldiersSpawned += SoldierRandomiser;
             TotalSoldiers += SoldierRandomiser;
 
